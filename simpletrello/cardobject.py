@@ -87,7 +87,8 @@ class Card(TrelloObject):
     def id_members(self):
         raise NotImplementedError
 
-
+    def add_comment(self, text):
+        raise NotImplementedError
 
     def archive(self):
         response = self.put(['cards', self.id], params={'closed': 'true'})
