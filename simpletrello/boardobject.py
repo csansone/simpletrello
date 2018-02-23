@@ -5,8 +5,8 @@ from __future__ import print_function, unicode_literals
 
 from simpletrello.trelloobject import TrelloObject
 
-class Board(TrelloObject):
 
+class Board(TrelloObject):
 
     def __init__(self, client, source_data=None):
         super(Board, self).__init__(client, source_data)

@@ -5,8 +5,8 @@ from __future__ import print_function, unicode_literals
 
 from simpletrello.trelloobject import TrelloObject
 
-class Comment(TrelloObject):
 
+class Comment(TrelloObject):
 
     def __init__(self, client, source_data=None):
         super(Comment, self).__init__(client, source_data)
@@ -59,4 +59,3 @@ class Comment(TrelloObject):
         if response['data']['text'] == value:
             # self._text = value
             self.populate_from_source(response)
-            

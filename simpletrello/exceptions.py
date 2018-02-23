@@ -3,6 +3,7 @@
 
 from __future__ import print_function, unicode_literals
 
+
 class RateLimitExceeded(Exception):
     """Raise when an http request returns status code 429.
     There is a limit of 300 requests per 10 seconds for each API key
@@ -10,6 +11,7 @@ class RateLimitExceeded(Exception):
     If a request exceeds the limit, Trello will return a 429 error.
     """
     pass
+
 
 class AuthenticationError(Exception):
     """Raise when expected API credentials are not found."""

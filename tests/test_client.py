@@ -2,7 +2,6 @@
 """test_client.py"""
 
 import os
-import pytest
 from simpletrello import TrelloClient
 
 

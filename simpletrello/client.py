@@ -18,8 +18,8 @@ API_VERSION = '1'
 TRELLO_URL = 'https://api.trello.com/{}'.format(API_VERSION)
 logger = logging.getLogger(__name__)
 
-class TrelloClient():
 
+class TrelloClient():
 
     def __init__(self, api_key=None, token=None):
         self.set_credentials(api_key=api_key, token=token)
@@ -49,11 +49,11 @@ class TrelloClient():
     ### HTTP METHODS ###
 
     def _http_request(
-        self,
-        method,
-        path_parts,
-        as_json=True,
-        params=None):
+            self,
+            method,
+            path_parts,
+            as_json=True,
+            params=None):
         """Make http request to Trello API.
 
         Params
@@ -215,6 +215,7 @@ class TrelloClient():
 
     def get_cards_by_board(self, board_id):
         response = self._get(['boards', board_id, 'cards'])
+        return [Card(self, card_source) for card_source in response]
 
     def get_card_comments(self, card_id):
         params = {'filter': 'commentCard'}
@@ -307,3 +308,4 @@ class TrelloClient():
     def __repr__(self):
         return('<simpletrello.TrelloCLient>(key={}...{}, token={}...{})'.format(
             self._api_key[0], self._api_key[-1], self._token[0], self._token[-1]))
+        

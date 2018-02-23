@@ -4,7 +4,6 @@
 from __future__ import print_function, unicode_literals
 
 from simpletrello.trelloobject import TrelloObject
-from simpletrello.cardobject import Card
 
 
 class List(TrelloObject):
@@ -90,4 +89,3 @@ class List(TrelloObject):
 
     def __repr__(self):
         return('<simpletrello.listobject.List ({}, {})>'.format(self.name, self.id))
-        

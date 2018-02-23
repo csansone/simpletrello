@@ -1,5 +1,7 @@
 #simpletrello
 
+[![Build Status](https://travis-ci.org/csansone/simpletrello.svg?branch=master)](https://travis-ci.org/csansone/simpletrello)
+
 A simple python wrapper to the Trello API.
 
 **Purpose:** The purpose of this project is to make it as simple as possible to access those features of Trello that are most commonly seen and used in the web GUI, and also likely to have utility in being accessed and modified programmatically.

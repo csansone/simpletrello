@@ -49,6 +49,7 @@ def combine_values(param_items):
     param_string = ','.join(param_items)
     return param_string
 
+
 def is_stringy(something):
     """Determine if something is a string or Unicode object
     in a manner that is compatible with py2 and py3.
@@ -66,7 +67,8 @@ def is_stringy(something):
     except NameError:
         return isinstance(something, str)
 
+
 def create_random_text(num_chars):
-    chars = (str(randint(0,9)) for _ in range(num_chars))
+    chars = (str(randint(0, 9)) for _ in range(num_chars))
     random_text = ''.join(chars)
     return random_text

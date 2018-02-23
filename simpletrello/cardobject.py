@@ -5,8 +5,8 @@ from __future__ import print_function, unicode_literals
 
 from simpletrello.trelloobject import TrelloObject
 
-class Card(TrelloObject):
 
+class Card(TrelloObject):
 
     def __init__(self, client, source_data=None):
         super(Card, self).__init__(client, source_data)
@@ -102,8 +102,8 @@ class Card(TrelloObject):
             self._closed = False
 
     def move_to_list(self, list_id):
-        response = self.put(['cards', self.id], 
-                params={'idList': list_id})
+        response = self.put(['cards', self.id],
+                            params={'idList': list_id})
         if response['idList'] == list_id:
             self._id_list = list_id
             self.id_board = response['idBoard']

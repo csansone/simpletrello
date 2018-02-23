@@ -33,7 +33,7 @@ class TrelloObject(object):
     def print_summary(self):
         """Print common attributes to console."""
         attributes_to_print = ['id', 'name', 'date',
-            'desc', 'url', 'closed']
+                               'desc', 'url', 'closed']
 
         for attr in attributes_to_print:
             try:
