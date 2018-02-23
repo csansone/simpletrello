@@ -87,6 +87,9 @@ class Board(TrelloObject):
         Consider archiving instead.
         """
         response = self.client.delete_board(self.id)
+        if response['_value'] is None:
+            # TODO
+            pass
 
     def rename(self, new_name):
         response = self.put(['boards', self.id], params={'name': new_name})

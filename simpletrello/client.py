@@ -264,7 +264,13 @@ class TrelloClient():
     ### DELETE ITEMS
 
     def delete_board(self, board_id):
+        """Delete board identified by board_id.
+
+        This does delete the board, but it needs work.
+        """
         response = self._delete(['boards', board_id])
+        assert response['_value'] is None
+        return response
 
     ### SEARCH
 
@@ -308,4 +314,3 @@ class TrelloClient():
     def __repr__(self):
         return('<simpletrello.TrelloCLient>(key={}...{}, token={}...{})'.format(
             self._api_key[0], self._api_key[-1], self._token[0], self._token[-1]))
-        
