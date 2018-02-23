@@ -6,6 +6,7 @@ from __future__ import print_function, unicode_literals
 from simpletrello.trelloobject import TrelloObject
 from simpletrello.cardobject import Card
 
+
 class List(TrelloObject):
     def __init__(self, client, source_data=None, with_cards=False):
         super(List, self).__init__(client, source_data=None)
@@ -40,7 +41,7 @@ class List(TrelloObject):
 
     @name.setter
     def name(self, value):
-        response = self.put(['lists', self.id], params = {'name': value})
+        response = self.put(['lists', self.id], params={'name': value})
         if response['name'] == value:
             self._name = value
 
@@ -89,4 +90,4 @@ class List(TrelloObject):
 
     def __repr__(self):
         return('<simpletrello.listobject.List ({}, {})>'.format(self.name, self.id))
-
+        

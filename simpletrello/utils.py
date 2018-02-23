@@ -4,6 +4,7 @@
 from __future__ import print_function, unicode_literals
 from random import randint
 
+
 def listify(data):
     """Check if input is a list. If not, make it a single item list.
     Used for functions designed to operate on multiple objects,
@@ -21,6 +22,7 @@ def listify(data):
     if type(data) == list:
         return data
     return [data]
+
 
 def combine_values(param_items):
     """Return a <value> suitable for a <name=value> URL parameter.
@@ -57,7 +59,7 @@ def is_stringy(something):
 
     Notes
     -----
-    
+
     """
     try:
         return isinstance(something, (str, unicode))

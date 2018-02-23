@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 class TrelloClient():
 
+
     def __init__(self, api_key=None, token=None):
         self.set_credentials(api_key=api_key, token=token)
 
@@ -47,11 +48,12 @@ class TrelloClient():
 
     ### HTTP METHODS ###
 
-    def _http_request(self, 
-            method,
-            path_parts,
-            as_json=True,
-            params=None):
+    def _http_request(
+        self,
+        method,
+        path_parts,
+        as_json=True,
+        params=None):
         """Make http request to Trello API.
 
         Params
@@ -85,7 +87,7 @@ class TrelloClient():
             response = requests.delete(url, params=payload)
 
         # Check for response errors before returning anything
-        if response.ok == False:
+        if response.ok is False:
             if response.status_code == 429:
                 # Trello API returns 429 for rate limit exceeded.
                 raise RateLimitExceeded
@@ -95,7 +97,7 @@ class TrelloClient():
             logger.error(log_text)
             response.raise_for_status()
 
-        if as_json == True:
+        if as_json is True:
             _json = response.json()
             return _json
         else:
@@ -103,14 +105,16 @@ class TrelloClient():
 
     def _get(self, path_parts, as_json=True, params=None):
         """Perform a GET request against Trello API."""
-        response = self._http_request(method='get',
+        response = self._http_request(
+            method='get',
             path_parts=path_parts,
             as_json=as_json,
             params=params)
         return response
 
     def _post(self, path_parts, as_json=True, params=None):
-        response = self._http_request(method='post',
+        response = self._http_request(
+            method='post',
             path_parts=path_parts,
             as_json=as_json,
             params=params)
@@ -118,7 +122,8 @@ class TrelloClient():
 
     def _put(self, path_parts, as_json=True, params=None):
         """Perform a PUT request against Trello API."""
-        response = self._http_request(method='put',
+        response = self._http_request(
+            method='put',
             path_parts=path_parts,
             as_json=as_json,
             params=params)
@@ -126,11 +131,12 @@ class TrelloClient():
 
     def _delete(self, path_parts, as_json=True, params=None):
         """Perform a DELETE request against Trello API."""
-        response = self._http_request(method='delete',
+        response = self._http_request(
+            method='delete',
             path_parts=path_parts,
             as_json=as_json,
             params=params)
-        assert response['_value'] == None
+        assert response['_value'] is None
         return response
 
     def get_all_boards(self):
@@ -157,12 +163,10 @@ class TrelloClient():
             raise ValueError('More than one board matches searched name.')
         return matches[0]
 
-
     def search_boards_by_name(self, name_to_search):
         result = self.search(name_to_search, model_types='boards')
         boards = [Board(self, info) for info in result['boards']]
         return boards
-
 
     def get_board(self, board_id, fields=None, raw=False):
         # if fields:
@@ -221,7 +225,6 @@ class TrelloClient():
         response = self._get(['actions', comment_id])
         return Comment(self, response)
 
-
     ### CREATE NEW ITEMS
 
     def create_board(self, params=None):
@@ -233,7 +236,8 @@ class TrelloClient():
         return new_board
 
     def create_list(self, list_name, id_board, pos='bottom', list_id_to_copy=None):
-        params = {'name': list_name,
+        params = {
+            'name': list_name,
             'idBoard': id_board,
             'pos': pos,
         }
@@ -244,7 +248,8 @@ class TrelloClient():
         return new_list
 
     def create_card(self, card_name, id_list, desc=None, pos='bottom', card_id_to_copy=None):
-        params = {'name': card_name,
+        params = {
+            'name': card_name,
             'idList': id_list,
             'desc': desc,
             'pos': pos,
@@ -295,10 +300,10 @@ class TrelloClient():
     def get_private_boards(self):
         """Get boards that have no other members and are set to private."""
         pass
-        
+
     def get_boards_by_name(self, partial=False):
         pass
 
     def __repr__(self):
-        return('<simpletrello.TrelloCLient>(key={}...{}, token={}...{})'\
-            .format(self._api_key[0], self._api_key[-1], self._token[0], self._token[-1]))
+        return('<simpletrello.TrelloCLient>(key={}...{}, token={}...{})'.format(
+            self._api_key[0], self._api_key[-1], self._token[0], self._token[-1]))

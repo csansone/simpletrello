@@ -5,6 +5,7 @@ import os
 import pytest
 from simpletrello import TrelloClient
 
+
 def test_client():
     """Test that env variables are set and TrelloCLient instance is OK."""
     key = os.getenv('SIMPLETRELLO_API_KEY')

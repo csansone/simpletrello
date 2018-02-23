@@ -2,9 +2,11 @@
 """test_basic.py"""
 import pytest
 
+
 def test_math():
-	assert 2 * 2 == 4
+    assert 2 * 2 == 4
+
 
 def test_bad_math():
-	with pytest.raises(AssertionError):
-		assert 2 ** 2 == 2
+    with pytest.raises(AssertionError):
+        assert 2 ** 2 == 2

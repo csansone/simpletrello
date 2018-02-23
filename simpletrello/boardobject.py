@@ -7,6 +7,7 @@ from simpletrello.trelloobject import TrelloObject
 
 class Board(TrelloObject):
 
+
     def __init__(self, client, source_data=None):
         super(Board, self).__init__(client, source_data)
         self._populate_from_source(self.source_data)
@@ -28,13 +29,13 @@ class Board(TrelloObject):
 
     @name.setter
     def name(self, value):
-        response = self.put(['boards', self.id], params={'name': new_name})
-        if response['name'] == new_name:
-            self.name = new_name
+        response = self.put(['boards', self.id], params={'name': value})
+        if response['name'] == value:
+            self.name = value
 
     @property
     def closed(self):
-        if self._closed == None:
+        if self._closed is None:
             self.refresh_full_data()
         return self._closed
 
@@ -72,12 +73,12 @@ class Board(TrelloObject):
 
     def archive(self):
         response = self.client._put(['boards', self.id], params={'closed': 'true'})
-        if response['closed'] == True:
+        if response['closed'] is True:
             self._closed = True
 
     def unarchive(self):
         response = self.client._put(['boards', self.id], params={'closed': 'false'})
-        if response['closed'] == False:
+        if response['closed'] is False:
             self._closed = False
 
     def delete(self):

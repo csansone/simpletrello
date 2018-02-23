@@ -7,6 +7,7 @@ from simpletrello.trelloobject import TrelloObject
 
 class Card(TrelloObject):
 
+
     def __init__(self, client, source_data=None):
         super(Card, self).__init__(client, source_data)
         self._populate_from_source(source_data)
@@ -92,12 +93,12 @@ class Card(TrelloObject):
 
     def archive(self):
         response = self.put(['cards', self.id], params={'closed': 'true'})
-        if response['closed'] == True:
+        if response['closed'] is True:
             self._closed = True
 
     def unarchive(self):
         response = self.put(['cards', self.id], params={'closed': 'false'})
-        if response['closed'] == False:
+        if response['closed'] is False:
             self._closed = False
 
     def move_to_list(self, list_id):

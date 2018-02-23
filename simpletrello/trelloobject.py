@@ -3,6 +3,7 @@
 
 from __future__ import print_function, unicode_literals
 
+
 class TrelloObject(object):
     """Parent class for the other objects.
 
@@ -30,7 +31,9 @@ class TrelloObject(object):
         return self.client._delete(*args, **kwargs)
 
     def print_summary(self):
-        attributes_to_print = ['id', 'name', 'desc', 'closed']
+        """Print common attributes to console."""
+        attributes_to_print = ['id', 'name', 'date',
+            'desc', 'url', 'closed']
 
         for attr in attributes_to_print:
             try:
@@ -43,4 +46,3 @@ class TrelloObject(object):
         to always be subclassed as Board, List, or Card.
         """
         return('<TrelloObject, yo> {}'.format(self.id))
-

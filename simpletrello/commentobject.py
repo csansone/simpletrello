@@ -7,6 +7,7 @@ from simpletrello.trelloobject import TrelloObject
 
 class Comment(TrelloObject):
 
+
     def __init__(self, client, source_data=None):
         super(Comment, self).__init__(client, source_data)
         self.populate_from_source(source_data)
@@ -58,3 +59,4 @@ class Comment(TrelloObject):
         if response['data']['text'] == value:
             # self._text = value
             self.populate_from_source(response)
+            
