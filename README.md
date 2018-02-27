@@ -1,4 +1,4 @@
-#simpletrello
+# Simpletrello
 
 [![Build Status](https://travis-ci.org/csansone/simpletrello.svg?branch=master)](https://travis-ci.org/csansone/simpletrello)
 
@@ -6,13 +6,13 @@ A simple python wrapper to the Trello API.
 
 **Purpose:** The purpose of this project is to make it as simple as possible to access those features of Trello that are most commonly seen and used in the web GUI, and also likely to have utility in being accessed and modified programmatically.
 
-##Quickstart
+## Quickstart
 
 You need your API key and an authorization token.
 
-Get you Trello API key [here](https://trello.com/app-key). There is a link on the page to generate yourself a token.
+Get your Trello API key [here](https://trello.com/app-key). There is a link on the page to generate yourself a token.
 
-###Client
+### Client
 
 Armed with your API key and token, you are ready to instantiate a client.
 
@@ -59,11 +59,11 @@ In the event that arguments are not passed and the variables are not set, an `Au
 
 ---
 
-##Tests
+## Tests
 
 ---
 
-##InsecurePlatformWarning
+## InsecurePlatformWarning
 
 The `requests` library depends on `urllib3` to do its work.
 
@@ -85,6 +85,6 @@ pulls in the following additional dependencies:
 
 ---
 
-##License
+## License
 
 This software is licensed under the MIT License. Full text in the `LICENSE` file.
