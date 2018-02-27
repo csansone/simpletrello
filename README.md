@@ -79,20 +79,60 @@ I have created a demonstration board at https://trello.com/b/xJptH4LM/ and named
 '59b20aa457b03ce5735de812'
 ```
 
-Above, with python markup.
-Below, without.
+Okay, so we can get a board if we know its URL. Each board (and this is true for most or all other trello structures) also has a unique `id`.
 
-```
->>> board = trello.get_board('xJptH4LM')
+It is probably a good habit to use `id` attributes, but either the `id` or the URL segment after `trello.com/b` will work.
+
+```python
+>>> board = trello.get_board(''59b20aa457b03ce5735de812'')
 >>> board.name
 'Test Board 001'
 >>> board.id
 '59b20aa457b03ce5735de812'
 ```
 
+At the time of this writing (February, 2018), this `id` attribute doesn't seem to be present in any of the web page code, but only is accessible programmatically.
+
+Interestingly, visiting `https://trello.com/b/<BOARD_ID>`, where <BOARD_ID> is the `id` attribute, does redirect to the Trello board with that ID.
+
+#### Create a Board
+
+```python
+>>> new_board = trello.create_board('Naming Things is Hard')
+>>> new_board.name
+'Naming Things is Hard'
+>>> new_board.id
+'5a94f06be7bd9712d1971d19'
+```
+
+#### Get All Boards
+
+This gets all the boards you have access to with your account, including:
+
+- open boards
+- closed boards
+- boards you admin
+- boards where you have been added as a user
+- boards you have starred
+
+```python
+>>> boards = trello.get_all_boards()
+>>> len(boards)
+63
+>>> for i, board in enumerate(boards):
+...     if board.name == 'Test Board 001':
+...         print(i)
+... 
+42
+>>> boards[42].name
+'Test Board 001'
+>>> boards[42].id
+'59b20aa457b03ce5735de812'
+```
+
 ## Tests
 
-
+Documentation coming soon.
 
 ## InsecurePlatformWarning
 
