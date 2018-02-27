@@ -6,7 +6,7 @@ A simple python wrapper to the Trello API.
 
 **Purpose:** The purpose of this project is to make it as simple as possible to access those features of Trello that are most commonly seen and used in the web GUI, and also likely to have utility in being accessed and modified programmatically.
 
-## Quickstart
+## Usage
 
 You need your API key and an authorization token.
 
@@ -20,7 +20,7 @@ There are two ways to pass your credentials to the TrelloClient object on creati
 
 The first is to pass `api_key` and `token` arguments:
 
-```
+```python
 from simpletrello import TrelloClient
 
 trello = TrelloClient(
@@ -37,7 +37,7 @@ Alternatively, set the following environment variables:
 
 and call the class with no arguments:
 
-```
+```python
 from simpletrello import TrelloClient
 
 trello = TrelloClient()
@@ -57,11 +57,42 @@ Only if `TrelloClient`is called with no arguments, it will use the environment v
 
 In the event that arguments are not passed and the variables are not set, an `AuthenticationError` will be raised.
 
----
+*Note: Everything is based on the client described above.*
+
+*Usage docs below will use `trello` to represent a `TrelloCLient` instance as called from the instructions above.*
+
+### Boards
+
+Boards are the highest level structure in a Trello account. The simpletrello library offers several convenience methods to access individual boards or groups of boards.
+
+#### Get a Single Board
+
+Simple and fast, for when you know what board you want.
+
+I have created a demonstration board at https://trello.com/b/xJptH4LM/ and named it *Test Board 001*.
+
+```python
+>>> board = trello.get_board('xJptH4LM')
+>>> board.name
+'Test Board 001'
+>>> board.id
+'59b20aa457b03ce5735de812'
+```
+
+Above, with python markup.
+Below, without.
+
+```
+>>> board = trello.get_board('xJptH4LM')
+>>> board.name
+'Test Board 001'
+>>> board.id
+'59b20aa457b03ce5735de812'
+```
 
 ## Tests
 
----
+
 
 ## InsecurePlatformWarning
 
@@ -81,9 +112,6 @@ pulls in the following additional dependencies:
 	pycparser==2.18
 	pyOpenSSL==17.2.0
 	six==1.10.0
-
-
----
 
 ## License
 
