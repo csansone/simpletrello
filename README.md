@@ -84,7 +84,7 @@ Okay, so we can get a board if we know its URL. Each board (and this is true for
 It is probably a good habit to use `id` attributes, but either the `id` or the URL segment after `trello.com/b` will work.
 
 ```python
->>> board = trello.get_board(''59b20aa457b03ce5735de812'')
+>>> board = trello.get_board('59b20aa457b03ce5735de812')
 >>> board.name
 'Test Board 001'
 >>> board.id
@@ -137,6 +137,8 @@ Documentation coming soon.
 ## InsecurePlatformWarning
 
 The `requests` library depends on `urllib3` to do its work.
+
+Certain Python versions (below 2.7.9?) will issue `InsecurePlatformWarning`, along with further instructions that should be read by the user.
 
 https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
 https://urllib3.readthedocs.io/en/latest/user-guide.html#ssl-py2

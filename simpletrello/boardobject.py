@@ -31,7 +31,7 @@ class Board(TrelloObject):
     def name(self, value):
         response = self.put(['boards', self.id], params={'name': value})
         if response['name'] == value:
-            self.name = value
+            self._name = value
 
     @property
     def closed(self):

@@ -67,7 +67,7 @@ class List(TrelloObject):
 
     def refresh_full_data(self):
         self._full_data_cache = self.client.get_list(self.id, fields='all', raw=True)
-        self.populate_from_source(self._full_data_cache)
+        self._populate_from_source(self._full_data_cache)
 
     def create_card(
             self,
