@@ -159,11 +159,12 @@ pulls in the following additional dependencies:
 
 ### 0.1.2
 
+- Implemented setters for `closed` property of boards and lists
 - 
 
 ### 0.1.1
 
-- Improved PEP8 compliance 
+- Improved PEP8 compliance
 - Early stage design improvements
 - Some documentation added to README file
 - Not ready for use in projects

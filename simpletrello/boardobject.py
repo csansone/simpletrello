@@ -39,6 +39,15 @@ class Board(TrelloObject):
             self.refresh_full_data()
         return self._closed
 
+    @closed.setter
+    def closed(self, value):
+        if value in [True, 'true']:
+            self.archive()
+        elif value in [False, 'false']:
+            self.unarchive()
+        else:
+            raise ValueError('Board.closed expects a value of True or False')
+
     @property
     def lists(self):
         if not self._lists:

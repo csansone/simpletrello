@@ -45,6 +45,19 @@ class List(TrelloObject):
             self._name = value
 
     @property
+    def closed(self):
+        return self._closed
+
+    @closed.setter
+    def closed(self, value):
+        if value in [True, 'true']:
+            self.archive()
+        elif value in [False, 'false']:
+            self.unarchive()
+        else:
+            raise ValueError('List.closed expects a value of True or False')
+
+    @property
     def pos(self):
         return self._pos
 
