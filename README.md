@@ -155,6 +155,24 @@ pulls in the following additional dependencies:
 	pyOpenSSL==17.2.0
 	six==1.10.0
 
+## Changelog
+
+### 0.1.2
+
+- 
+
+### 0.1.1
+
+- Improved PEP8 compliance 
+- Early stage design improvements
+- Some documentation added to README file
+- Not ready for use in projects
+
+### 0.1.0
+
+- Initial release
+- Not ready for use in projects
+
 ## License
 
 This software is licensed under the MIT License. Full text in the `LICENSE` file.

@@ -72,12 +72,12 @@ class Board(TrelloObject):
         return new_list
 
     def archive(self):
-        response = self.client._put(['boards', self.id], params={'closed': 'true'})
+        response = self.put(['boards', self.id], params={'closed': 'true'})
         if response['closed'] is True:
             self._closed = True
 
     def unarchive(self):
-        response = self.client._put(['boards', self.id], params={'closed': 'false'})
+        response = self.put(['boards', self.id], params={'closed': 'false'})
         if response['closed'] is False:
             self._closed = False
 
