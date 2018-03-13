@@ -1,5 +1,5 @@
 # coding: utf-8
-"""boardobject.py"""
+"""cardobject.py"""
 
 from __future__ import print_function, unicode_literals
 
@@ -107,3 +107,6 @@ class Card(TrelloObject):
         if response['idList'] == list_id:
             self._id_list = list_id
             self.id_board = response['idBoard']
+
+    def __repr__(self):
+        return('<simpletrello.cardobject.Card ({}, {})>'.format(self.name, self.id))
