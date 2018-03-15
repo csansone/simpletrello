@@ -159,8 +159,11 @@ pulls in the following additional dependencies:
 
 ### 0.1.2
 
-- Implemented setters for `closed` property of boards and lists
-- 
+- Implemented `comments` attribute for `Card` instances
+- Added `create_comment()` to `Card`
+- Implemented setters for `closed` property of `Board` and `List` instances
+- Fixed board methods using `self.client._put()` to use `self.put()`
+- fixed `__repr__` for `Card` instances
 
 ### 0.1.1
 

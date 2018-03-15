@@ -16,7 +16,7 @@ class Comment(TrelloObject):
         _data = source_data.get('data')
         self._id = source_data.get('id')
         self._id_board = _data.get('board', {}).get('id')
-        self._id_creator = source_data.get('idMemberCreator')
+        self._id_member_creator = source_data.get('idMemberCreator')
         self._id_card = _data.get('card', {}).get('id')
         self._id_list = _data.get('list', {}).get('id')
         self._text = _data.get('text')
@@ -35,8 +35,8 @@ class Comment(TrelloObject):
         return self._id_card
 
     @property
-    def id_creator(self):
-        return self.id_creator
+    def id_member_creator(self):
+        return self._id_creator
 
     @property
     def id_list(self):
@@ -59,3 +59,10 @@ class Comment(TrelloObject):
         if response['data']['text'] == value:
             # self._text = value
             self.populate_from_source(response)
+
+    def __repr__(self):
+        if len(self.text) > 10:
+            repr_text = '{}...'.format(self.text[:10])
+        else:
+            repr_text = self.text
+        return('<simpletrello.commentobject.Comment ({}, {})>'.format(repr_text, self.id))

@@ -261,6 +261,12 @@ class TrelloClient():
         new_card = Card(self, response)
         return new_card
 
+    def create_comment(self, text, id_card):
+        """Add new comment to card."""
+        params = {'text': text}
+        response = self._post(['cards', id_card, 'actions', 'comments'], params=params)
+        new_comment = Comment(self, response)
+
     ### DELETE ITEMS
 
     def delete_board(self, board_id):

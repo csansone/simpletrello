@@ -16,6 +16,7 @@ class Card(TrelloObject):
         self._id = source_data.get('id')
         self._name = source_data.get('name')
         self._closed = source_data.get('closed')
+        self._comments = None
         self._desc = source_data.get('desc')
         self._id_board = source_data.get('idBoard')
         self._id_labels = source_data.get('idLabels')
@@ -56,6 +57,9 @@ class Card(TrelloObject):
 
     @property
     def comments(self):
+        if self._comments is None:
+            self._comments = self.client.get_card_comments(self.id)
+        return self._comments
         raise NotImplementedError('Comments are still on the simpletrello TODO list.')
 
     @property
@@ -88,8 +92,10 @@ class Card(TrelloObject):
     def id_members(self):
         raise NotImplementedError
 
-    def add_comment(self, text):
-        raise NotImplementedError
+    def create_comment(self, text):
+        new_comment = self.client.create_comment(text, self.id)
+        if new_comment.text == text:
+            self._comments.append(new_comment)
 
     def archive(self):
         response = self.put(['cards', self.id], params={'closed': 'true'})
