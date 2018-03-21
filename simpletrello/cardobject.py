@@ -89,6 +89,10 @@ class Card(TrelloObject):
         return self._id_labels
 
     @property
+    def labels(self):
+        return self._labels
+
+    @property
     def id_members(self):
         raise NotImplementedError
 

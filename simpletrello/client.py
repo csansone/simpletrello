@@ -267,6 +267,21 @@ class TrelloClient():
         response = self._post(['cards', id_card, 'actions', 'comments'], params=params)
         new_comment = Comment(self, response)
 
+    def create_label(self, name, color, id_board):
+        """Add new label to board."""
+        allowed_label_colors = ['black', 'blue', 'green',
+                                'lime', 'orange',
+                                'pink', 'purple', 'red',
+                                'sky', 'yellow', 'null', None]
+        assert color in allowed_label_colors
+        if color is None:
+            color = 'null'
+        raise NotImplementedError('TODO')
+        params = {'name': name, 'color': color, 'idBoard': id_board}
+        response = self.post(['labels'], params=params)
+        # TODO build Label object
+        new label = Label(self, response)
+
     ### DELETE ITEMS
 
     def delete_board(self, board_id):
