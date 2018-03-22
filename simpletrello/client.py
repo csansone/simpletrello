@@ -11,6 +11,7 @@ from simpletrello.boardobject import Board
 from simpletrello.cardobject import Card
 from simpletrello.commentobject import Comment
 from simpletrello.exceptions import AuthenticationError, RateLimitExceeded
+from simpletrello.labelobject import Label
 from simpletrello.listobject import List
 from simpletrello.utils import listify, combine_values, is_stringy
 
@@ -226,6 +227,19 @@ class TrelloClient():
         response = self._get(['actions', comment_id])
         return Comment(self, response)
 
+    def get_label(self, label_id):
+        raise NotImplementedError
+
+    def get_board_labels(self, board_id):
+        params = {'fields': 'id', 'labels': 'all'}
+        response = self._get(['boards', board_id], params = params)
+        labels = [Label(self, label_source) for label_source in response['labels']]
+        return labels
+
+
+    def get_card_labels(self, card_id):
+        pass
+
     ### CREATE NEW ITEMS
 
     def create_board(self, params=None):
@@ -278,9 +292,9 @@ class TrelloClient():
             color = 'null'
         raise NotImplementedError('TODO')
         params = {'name': name, 'color': color, 'idBoard': id_board}
-        response = self.post(['labels'], params=params)
+        response = self._post(['labels'], params=params)
         # TODO build Label object
-        new label = Label(self, response)
+        new_label = Label(self, response)
 
     ### DELETE ITEMS
 

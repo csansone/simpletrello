@@ -159,8 +159,10 @@ pulls in the following additional dependencies:
 
 ### 0.1.2
 
+- Created `Label` class
+- Implemented `labels` attribute for `Card` and `Board` instances
 - Implemented `comments` attribute for `Card` instances
-- Added `create_comment()` to `Card`
+- Added `create_comment()` method to `Card`
 - Implemented setters for `closed` property of `Board` and `List` instances
 - Fixed board methods using `self.client._put()` to use `self.put()`
 - fixed `__repr__` for `Card` instances
