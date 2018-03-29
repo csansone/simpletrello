@@ -347,5 +347,5 @@ class TrelloClient():
         pass
 
     def __repr__(self):
-        return('<simpletrello.TrelloCLient>(key={}...{}, token={}...{})'.format(
+        return('<simpletrello.TrelloClient>(key={}...{}, token={}...{})'.format(
             self._api_key[0], self._api_key[-1], self._token[0], self._token[-1]))

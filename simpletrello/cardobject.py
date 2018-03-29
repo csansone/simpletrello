@@ -3,6 +3,7 @@
 
 from __future__ import print_function, unicode_literals
 
+from simpletrello.labelobject import Label
 from simpletrello.trelloobject import TrelloObject
 
 
@@ -22,7 +23,9 @@ class Card(TrelloObject):
         self._id_labels = source_data.get('idLabels')
         self._id_list = source_data.get('idList')
         self._id_members = source_data.get('idMembers')
-        self._labels = source_data.get('labels')
+        self._labels = [Label(client=self.client,
+                              source_data=label)
+                        for label in source_data.get('labels')]
         self._pos = source_data.get('pos')
         self._short_link = source_data.get('shortLink')
         self._subscribed = source_data.get('subscribed')

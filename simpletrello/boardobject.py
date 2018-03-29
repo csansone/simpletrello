@@ -59,6 +59,10 @@ class Board(TrelloObject):
         return self.client.get_cards_by_board(self._id)
 
     @property
+    def labels(self):
+        return self.client.get_board_labels(self.id)
+
+    @property
     def full_data(self):
         if not self._full_data_cache:
             self.refresh_full_data()

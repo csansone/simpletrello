@@ -59,7 +59,7 @@ In the event that arguments are not passed and the variables are not set, an `Au
 
 *Note: Everything is based on the client described above.*
 
-*Usage docs below will use `trello` to represent a `TrelloCLient` instance as called from the instructions above.*
+*Usage docs below will use `trello` to represent a `TrelloClient` instance as called from the instructions above.*
 
 ### Boards
 
