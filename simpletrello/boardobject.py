@@ -63,6 +63,9 @@ class Board(TrelloObject):
     def labels(self):
         if self._labels is None:
             response = self.client.get_board_labels(self.id)
+            if isinstance(response, list):
+                self._labels = response
+        return self._labels
 
     @property
     def full_data(self):
