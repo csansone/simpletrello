@@ -150,7 +150,7 @@ class TrelloClient():
 
     def get_board_by_name(self, board_name, partial=False):
         """Return a single board instance. Expect exactly one board to have <board_name>.
-        If no boards or multiple boards have <board_name>, raise an exception.
+        If no boards or multiple boards have <board_name>, raise a ValueError.
         Case insensitive.
         """
         boards = self.search_boards_by_name(board_name)
@@ -172,7 +172,9 @@ class TrelloClient():
     def get_board(self, board_id, fields=None, raw=False):
         # if fields:
         #     params = {'fields': combine_values(fields)}
-        params = {'fields': combine_values(fields)} if fields else None
+        params = {'labels': 'all'}
+        if fields:
+            params['fields'] = combine_values(fields)
         response = self._get(['boards', board_id], params=params)
         if raw:
             # Return a dict of data as returned by API
@@ -232,10 +234,9 @@ class TrelloClient():
 
     def get_board_labels(self, board_id):
         params = {'fields': 'id', 'labels': 'all'}
-        response = self._get(['boards', board_id], params = params)
+        response = self._get(['boards', board_id], params=params)
         labels = [Label(self, label_source) for label_source in response['labels']]
         return labels
-
 
     def get_card_labels(self, card_id):
         pass
@@ -280,6 +281,7 @@ class TrelloClient():
         params = {'text': text}
         response = self._post(['cards', id_card, 'actions', 'comments'], params=params)
         new_comment = Comment(self, response)
+        return new_comment
 
     def create_label(self, name, color, id_board):
         """Add new label to board."""
@@ -295,6 +297,7 @@ class TrelloClient():
         response = self._post(['labels'], params=params)
         # TODO build Label object
         new_label = Label(self, response)
+        return new_label
 
     ### DELETE ITEMS
 

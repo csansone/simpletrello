@@ -41,7 +41,7 @@ class Label(TrelloObject):
 
     @color.setter
     def color(self, value):
-        response = self.put(['labels', self.id], params = {'color': value})
+        response = self.put(['labels', self.id], params={'color': value})
         if response['color'] == value:
             self._color = value
 

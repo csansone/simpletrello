@@ -16,6 +16,7 @@ class Board(TrelloObject):
         self._id = source_data.get('id')
         self._name = source_data.get('name')
         self._closed = source_data.get('closed', None)
+        self._labels = source_data.get('labels', None)
         self._lists = None
         self._full_data_cache = None
 
@@ -60,7 +61,8 @@ class Board(TrelloObject):
 
     @property
     def labels(self):
-        return self.client.get_board_labels(self.id)
+        if self._labels is None:
+            response = self.client.get_board_labels(self.id)
 
     @property
     def full_data(self):

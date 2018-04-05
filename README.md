@@ -6,6 +6,10 @@ A simple python wrapper to the Trello API.
 
 **Purpose:** The purpose of this project is to make it as simple as possible to access those features of Trello that are most commonly seen and used in the web GUI, and also likely to have utility in being accessed and modified programmatically.
 
+**Python Versions Tested:** 3.4+, 2.7
+
+Python 3 is the present and future of the language. This project aims to also work properly on 2.7 at this time and into the forseeable future.
+
 ## Usage
 
 You need your API key and an authorization token.
@@ -165,7 +169,8 @@ pulls in the following additional dependencies:
 - Added `create_comment()` method to `Card`
 - Implemented setters for `closed` property of `Board` and `List` instances
 - Fixed board methods using `self.client._put()` to use `self.put()`
-- fixed `__repr__` for `Card` instances
+- Fixed `__repr__` for `Card` instances
+- Updated README to reflect python versions
 
 ### 0.1.1
 
